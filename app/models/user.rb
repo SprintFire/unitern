@@ -3,8 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates :first_name, presence: true,
-					 	length: { minimum: 3, maximum: 25 }
-  validates :last_name, presence: true, 
-					 	length: { minimum: 3, maximum: 25 }
+         
+  validates :first_name, presence: true, length: { minimum: 3, maximum: 25 }
+  validates :last_name, presence: true, length: { minimum: 3, maximum: 25 }
 end
