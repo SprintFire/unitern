@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+  has_many :companies, dependent: :destroy
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
@@ -6,4 +9,6 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true, length: { minimum: 3, maximum: 25 }
   validates :last_name, presence: true, length: { minimum: 3, maximum: 25 }
+
+
 end
