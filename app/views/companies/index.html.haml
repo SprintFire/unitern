@@ -1,0 +1,5 @@
+%h1 My Companies
+
+- @companies.each do |company|
+  %div
+    = link_to company.name, company_path(company)

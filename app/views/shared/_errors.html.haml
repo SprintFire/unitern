@@ -1,0 +1,13 @@
+.row.col-sm-10.col-sm-offset-1
+  - if obj.errors.any?
+    .row
+      .col-xs-8.col-xs-offset-2
+        .panel.panel-danger
+          .panel-heading
+            %h2.panel-title
+              = pluralize(obj.errors.count, "error")
+              prohibited this resource from being saved:
+            .panel-body
+              %ul
+                - obj.errors.full_messages.each do |msg|
+                  %li= msg
