@@ -1,0 +1,16 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title
+            = "#{@opportunity.name} (#{@opportunity.company.name})"
+        .panel-body
+          %ul.list-group
+            %li.list-group-item= @opportunity.location
+            %li.list-group-item= @opportunity.description
+            %li.list-group-item= @opportunity.responsibilities
+            %li.list-group-item= @opportunity.duration
+            %li.list-group-item= @opportunity.hourly_rate
+          -# - if current_user == @opportunity.user
+            -# = link_to "Edit", new_opportunity_path, class: "btn btn-primary"

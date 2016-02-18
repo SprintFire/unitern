@@ -20,21 +20,8 @@
 
   %body
     - if user_signed_in?
-      .navbar.navbar-default.navbar-static-top
-        .container
-          %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand(href="/") Unitern
-          .navbar-collapse.collapse.navbar-responsive-collapse
-            %ul.nav.navbar-nav.navbar-left
-              %li= link_to "Create Company", new_company_path
-              %li= link_to "Companies", companies_path
-              -# %li= link_to "Link 3", "/path3"
-              -# %li= link_to "Link 3", "/path3"
-            %ul.nav.navbar-nav.navbar-right
-              = link_to "Logout", destroy_user_session_path, method: :delete
+      = render "layouts/header"
+
     .container
       .row
         .col-lg-12
@@ -45,5 +32,7 @@
 
 
 
-    %footer
-      %p &copy; Company 2016
+    -# %footer
+    -#   %p &copy; UniTern 2016
+
+  = debug(params) if Rails.env.development?

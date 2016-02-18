@@ -1,12 +1,12 @@
-%h1.text-center Companies
+%h1.text-center Internships
 
 .container
   .row
-    - @companies.each do |company|
+    - @opportunities.each do |o|
       .col-md-6.col-md-offset-3
         .panel.panel-default
           .panel-heading
             %h3.panel-title
-              = link_to company.name, company_path(company)
+              = link_to o.name, opportunity_path(o)
           .panel-body
-            = company.description
+            = o.description

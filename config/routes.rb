@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-
   devise_for :users, :controllers => { registrations: 'registrations' }
 
   root 'welcome#index'
 
   resources :companies
+  resources :opportunities
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

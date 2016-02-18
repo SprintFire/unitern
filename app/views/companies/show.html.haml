@@ -1,9 +1,15 @@
-%h1= @company.name
-
-%p= 'by ' + @company.user.first_name + " " + @company.user.last_name
-
-%p= @company.name
-%p= @company.website
-%p= @company.description
-%p= @company.headquarters
-%p= @company.company_size
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title
+            = link_to @company.name
+        .panel-body
+          %ul.list-group
+            %li.list-group-item= @company.website
+            %li.list-group-item= @company.description
+            %li.list-group-item= @company.headquarters
+            %li.list-group-item= @company.company_size
+          - if current_user == @company.user
+            = link_to "Add internship", new_opportunity_path, class: "btn btn-primary"
