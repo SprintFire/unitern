@@ -9,8 +9,8 @@ class OpportunitiesController < ApplicationController
   def new
     # redirect to root path if user has no company yet
     if current_user.companies.empty?
-      redirect_to new_company_path
       flash[:danger] = "You must create a company before adding an internship"
+      redirect_to new_company_path
     end
 
     @opportunity = Opportunity.new

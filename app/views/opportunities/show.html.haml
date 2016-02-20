@@ -1,7 +1,7 @@
 .container
   .row
     .col-md-6.col-md-offset-3
-      .panel.panel-default
+      .panel.panel-default.auth-container
         .panel-heading
           %h3.panel-title
             = "#{@opportunity.name} (#{@opportunity.company.name})"
@@ -12,5 +12,6 @@
             %li.list-group-item= @opportunity.responsibilities
             %li.list-group-item= @opportunity.duration
             %li.list-group-item= @opportunity.hourly_rate
-          -# - if current_user == @opportunity.user
-            -# = link_to "Edit", new_opportunity_path, class: "btn btn-primary"
+            %br
+            - if current_user.companies.exists?(@opportunity.company)
+              = link_to "Edit", edit_opportunity_path(@opportunity), class: "btn btn-primary"

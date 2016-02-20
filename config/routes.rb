@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :companies
   resources :opportunities
 
+  get 'profile', to: 'users#profile', as: 'profile'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
