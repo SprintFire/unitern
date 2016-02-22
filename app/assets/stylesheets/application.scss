@@ -15,8 +15,15 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
+
 @import "variables";
+@import "defaults";
+@import "buttons";
 @import "header";
 @import "components/form";
-@import "welcome.scss";
+
+@import "welcome";
 @import "./auth-forms/main-form.sass";
+@import "card";
+@import "opportunities"
