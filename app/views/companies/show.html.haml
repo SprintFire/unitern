@@ -1,16 +1,63 @@
-.container
+.container.opportunity-card
   .row
-    .col-md-6.col-md-offset-3
-      .panel.panel-default.auth-container
-        .panel-heading
-          %h3.panel-title
-            = link_to @company.name
-        .panel-body
-          %ul.list-group
-            %li.list-group-item= @company.website
-            %li.list-group-item= @company.description
-            %li.list-group-item= @company.headquarters
-            %li.list-group-item= @company.company_size
-          - if current_user == @company.user
-            = link_to "Add internship", new_opportunity_path, class: "btn btn-primary"
-            = link_to "Edit", edit_company_path(@company), class: "btn btn-link"
+    .col-md-10.col-md-offset-1
+      %ul.ut-card
+        %li.panel-body
+          %div.col-md-12
+            %div.col-md-3
+              %img.img-rounded.img-responsive{src: "http://placehold.it/500x500"}
+            %div.col-md-9
+              %h1= @company.name
+              %h3
+                %strong
+                %i.fa.fa-globe
+                = @company.website
+            %ul.list-inline.col-md-12.ut-icon-container
+              %li
+                %i.fa.fa-users
+                = @company.company_size
+              %li
+                %i.fa.fa-building
+                = @company.headquarters
+              %li
+                %i.fa.fa-angle-right
+                = "Founded in #{@company.founded}"
+            %div.col-md-12.ut-card-description
+              %h3 Description
+              %p= simple_format(@company.description)
+            %div.col-md-12.ut-card-description
+            %div.col-md-12
+              -if user_signed_in? && current_user == @company.user
+                = link_to "Add internship", new_opportunity_path, class: "btn ut-btn ut-btn-green"
+              - if user_signed_in? && current_user.companies.exists?(@company)
+                = link_to "Edit", edit_company_path(@company), class: "btn btn-link"
+
+
+- unless @company.opportunities.empty?
+  %h1.text-center= "#{@company.name} internships"
+
+  .internships-container
+    - @company.opportunities.each do |o|
+      .col-md-4.col-sm-6
+        %ul.ut-card
+          %li.panel-body
+            %div.col-md-12.ut-card-heading
+              %div.col-md-3
+                %img.img-rounded.img-responsive{src: "http://placehold.it/150x150"}
+              %div.col-md-9
+                %h3= link_to o.name, opportunity_path(o)
+                %p
+                  %strong= link_to o.company.name, company_path(o.company)
+              %ul.list-inline.col-md-12.ut-icon-container
+                %li
+                  %i.fa.fa-eur
+                  = "#{number_with_precision(o.hourly_rate, precision: 2)}/hour"
+
+                %li
+                  %i.fa.fa-clock-o
+                  = "Updated #{o.updated_at.strftime('%d-%m-%Y')}"
+                %li
+                  %i.fa.fa-map-marker
+                  = o.location
+              %div.col-md-12.ut-card-description
+                %p= o.description.truncate(75)

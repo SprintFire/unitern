@@ -26,11 +26,11 @@
                 = "#{@opportunity.company.user.first_name} #{@opportunity.company.user.last_name}"
             %div.col-md-12.ut-card-description
               %h3 Description
-              %p= @opportunity.description
+              %p= simple_format(@opportunity.description)
             %div.col-md-12.ut-card-description
               %h3 Responsibilities
-              %p= @opportunity.responsibilities
+              %p= simple_format(@opportunity.responsibilities)
             %div.col-md-12
               = link_to "Apply", "#", class: "btn ut-btn ut-btn-green"
-              - if current_user.companies.exists?(@opportunity.company)
+              - if user_signed_in? && current_user.companies.exists?(@opportunity.company)
                 = link_to "Edit", edit_opportunity_path(@opportunity), class: "btn btn-link"

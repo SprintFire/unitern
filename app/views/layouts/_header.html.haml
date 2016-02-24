@@ -7,30 +7,28 @@
     %a.navbar-brand(href="/") Unitern
     .navbar-collapse.collapse.navbar-responsive-collapse
       %ul.nav.navbar-nav.navbar-left
-        %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Company
-            %span.caret
-          %ul.dropdown-menu
-            %li= link_to "Companies", companies_path
-            %li.divider{:role => "separator"}
-            %li= link_to "Create Company", new_company_path
-        %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Internships
-            %span.caret
-          %ul.dropdown-menu
-            %li= link_to "Internships", opportunities_path
-            - unless current_user.companies.empty?
-              %li.divider{:role => "separator"}
-              %li= link_to "Create Internship", new_opportunity_path
+        %li= link_to "Companies", companies_path
+        %li= link_to "Internships", opportunities_path
       %ul.nav.navbar-nav.navbar-right
         %ul.nav.navbar-nav.navbar-left
-          %li.dropdown
-            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              = current_user.email
-              %span.caret
-            %ul.dropdown-menu
-              %li= link_to "Profile", profile_path
-              %li.divider{:role => "separator"}
-              %li= link_to "Logout", destroy_user_session_path, method: :delete
+          - if user_signed_in?
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                = current_user.email
+                %span.caret
+              %ul.dropdown-menu
+                %li= link_to "Profile", profile_path
+                %li.divider{:role => "separator"}
+                %li= link_to "Logout", destroy_user_session_path, method: :delete
+            %li.dropdown.create-new
+              %a.dropdown-toggle.btn.ut-btn.ut-btn-green{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                Create New
+                %span.caret
+              %ul.dropdown-menu
+                %li= link_to "Company", new_company_path
+                - unless current_user.companies.empty?
+                  %li.divider{:role => "separator"}
+                  %li= link_to "Internship", new_opportunity_path
+          - else user_signed_in?
+            %li.btn.ut-btn.ut-btn-green.not-auth= link_to "Log in", new_user_session_path
+            %li.btn.ut-btn.ut-btn-blue.not-auth= link_to "Sign up", new_user_registration_path

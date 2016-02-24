@@ -1,49 +1,50 @@
-.container.unitern-form
+
+.container.opportunity-card
+  = render 'shared/errors', obj: @company
   .row
-    = render 'shared/errors', obj: @company
-    .col-lg-8.col-lg-offset-2
-      .panel.panel-default.auth-container
-        .panel-heading
-          %h4.text-center= form_header
-        .panel-body
+    .col-md-10.col-md-offset-1
+      %ul.ut-card
+        %li.panel-body
+          %h2.text-center= form_header
+          %hr.col-md-10.col-md-offset-1
           = form_for(@company, :html => {class: "form-horizontal", role: "form" }) do |f|
 
             .form-group
               .control-label.col-md-2
                 = f.label :name
                 %br/
-              .col-md-8
+              .col-md-9
                 = f.text_field :name, class: "form-control", placeholder: "Company name", autofocus: true
             .form-group
               .control-label.col-md-2
                 = f.label :website
                 %br/
-              .col-md-8
+              .col-md-9
                 = f.text_field :website, class: "form-control", placeholder: "Website"
             .form-group
               .control-label.col-md-2
                 = f.label :description
                 %br/
-              .col-md-8
+              .col-md-9
                 = f.text_area :description, rows: 4, class: "form-control", placeholder: "Company description"
             .form-group
               .control-label.col-md-2
                 = f.label :company_size
                 %br/
-              .col-md-8
+              .col-md-9
                 = f.number_field :company_size, class: "form-control", placeholder: "Company size"
             .form-group
               .control-label.col-md-2
                 = f.label :founded
                 %br/
-              .col-md-8
+              .col-md-9
                 = f.number_field :founded, class: "form-control", placeholder: "Founded"
             .form-group
               .control-label.col-md-2
                 = f.label :headquarters
                 %br/
-              .col-md-8
+              .col-md-9
                 = f.text_field :headquarters, class: "form-control", placeholder: "Headquarters"
             .form-group
               .col-md-offset-2.col-md-10
-                = f.submit(class: "btn btn-primary")
+                = f.submit(class: "btn ut-btn ut-btn-blue")

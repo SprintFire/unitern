@@ -1,12 +1,28 @@
 %h1.text-center Companies
 
-.container
-  .row
-    - @companies.each do |company|
-      .col-md-6.col-md-offset-3
-        .panel.panel-default
-          .panel-heading
-            %h3.panel-title
-              = link_to company.name, company_path(company)
-          .panel-body
-            = company.description
+.internships-container
+  - @companies.each do |company|
+    .col-md-4.col-sm-6
+      %ul.ut-card
+        %li.panel-body
+          %div.col-md-12.ut-card-heading
+            %div.col-md-3
+              %img.img-rounded.img-responsive{src: "http://placehold.it/150x150"}
+            %div.col-md-9
+              %h3= link_to company.name, company_path(company)
+              %p
+                %strong
+                  %i.fa.fa-globe
+                  = company.website
+            %ul.list-inline.col-md-12.ut-icon-container
+              %li
+                %i.fa.fa-users
+                = company.company_size
+              %li
+                %i.fa.fa-building
+                = company.headquarters
+              %li
+                %i.fa.fa-angle-right
+                = "Founded in #{company.founded}"
+            %div.col-md-12.ut-card-description
+              %p= company.description.truncate(75)

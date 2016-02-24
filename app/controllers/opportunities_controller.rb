@@ -1,4 +1,5 @@
 class OpportunitiesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_opportunity, only: [:edit, :update, :show, :destroy]
   before_action :require_company_owner, only: [:edit, :update, :destroy]
 
