@@ -1,0 +1,48 @@
+.container.opportunity-card
+  = render 'shared/errors', obj: @opportunity
+  .row
+    .col-md-10.col-md-offset-1
+      %ul.ut-card
+        %li.panel-body
+          %h2.text-center Edit Internship
+          %hr.col-md-10.col-md-offset-1
+          = form_for(@opportunity, :html => {class: "form-horizontal", role: "form" }) do |f|
+            .form-group
+              .control-label.col-md-2
+                = f.label :name
+                %br/
+              .col-md-9
+                = f.text_field :name, class: "form-control", placeholder: "Internship name"
+            .form-group
+              .control-label.col-md-2
+                = f.label :location
+                %br/
+              .col-md-9
+                = f.text_field :location, class: "form-control", placeholder: "Location"
+            .form-group
+              .control-label.col-md-2
+                = f.label :duration
+                %br/
+              .col-md-9
+                = f.text_field :duration, class: "form-control", placeholder: "How long is the internship for"
+            .form-group
+              .control-label.col-md-2
+                = f.label :hourly_rate
+                %br/
+              .col-md-9
+                = f.number_field :hourly_rate, class: "form-control", placeholder: "Hourly rate", step: "any"
+            .form-group
+              .control-label.col-md-2
+                = f.label :description
+                %br/
+              .col-md-9
+                = f.text_area :description, rows: 6, class: "form-control", placeholder: "Description"
+            .form-group
+              .control-label.col-md-2
+                = f.label :responsibilities
+                %br/
+              .col-md-9
+                = f.text_area :responsibilities, rows: 4, class: "form-control", placeholder: "Responsibilities"
+            .form-group
+              .col-md-offset-2.col-md-10
+                = f.submit "Update Internship", class: "btn ut-btn ut-btn-blue"

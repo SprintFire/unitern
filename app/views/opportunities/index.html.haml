@@ -1,0 +1,27 @@
+%h1.text-center Internships
+
+.internships-container
+  - @opportunities.each do |o|
+    .col-md-4.col-sm-6
+      %ul.ut-card
+        %li.panel-body
+          %div.col-md-12.ut-card-heading
+            %div.col-md-3
+              %img.img-rounded.img-responsive{src: "http://placehold.it/150x150"}
+            %div.col-md-9
+              %h3= link_to o.name, opportunity_path(o)
+              %p
+                %strong= link_to o.company.name, company_path(o.company)
+            %ul.list-inline.col-md-12.ut-icon-container
+              %li
+                %i.fa.fa-eur
+                = "#{number_with_precision(o.hourly_rate, precision: 2)}/hour"
+
+              %li
+                %i.fa.fa-clock-o
+                = "Updated #{o.updated_at.strftime('%d-%m-%Y')}"
+              %li
+                %i.fa.fa-map-marker
+                = o.location
+            %div.col-md-12.ut-card-description
+              %p= o.description.truncate(75)

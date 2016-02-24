@@ -1,0 +1,36 @@
+.container.opportunity-card
+  .row
+    .col-md-10.col-md-offset-1
+      %ul.ut-card
+        %li.panel-body
+          %div.col-md-12
+            %div.col-md-3
+              %img.img-rounded.img-responsive{src: "http://placehold.it/500x500"}
+            %div.col-md-9
+              %h1= @opportunity.name
+              %h3
+                %strong= link_to @opportunity.company.name, company_path(@opportunity.company)
+            %ul.list-inline.col-md-12.ut-icon-container
+              %li
+                %i.fa.fa-eur
+                = "#{number_with_precision(@opportunity.hourly_rate, precision: 2)}/hour"
+
+              %li
+                %i.fa.fa-clock-o
+                = "Updated #{@opportunity.updated_at.strftime('%d-%m-%Y')}"
+              %li
+                %i.fa.fa-map-marker
+                = @opportunity.location
+              %li
+                %i.fa.fa-user
+                = "#{@opportunity.company.user.first_name} #{@opportunity.company.user.last_name}"
+            %div.col-md-12.ut-card-description
+              %h3 Description
+              %p= simple_format(@opportunity.description)
+            %div.col-md-12.ut-card-description
+              %h3 Responsibilities
+              %p= simple_format(@opportunity.responsibilities)
+            %div.col-md-12
+              = link_to "Apply", "#", class: "btn ut-btn ut-btn-green"
+              - if user_signed_in? && current_user.companies.exists?(@opportunity.company)
+                = link_to "Edit", edit_opportunity_path(@opportunity), class: "btn btn-link"

@@ -1,0 +1,4 @@
+%h1.text-center Profile
+%h3.text-center= current_user.first_name + " " + current_user.last_name + " (#{current_user.email})"
+
+%p.text-center= link_to 'Edit Account', edit_user_registration_path, class: 'btn btn-link'
