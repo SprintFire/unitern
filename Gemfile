@@ -21,10 +21,12 @@ gem 'devise-bootstrap-views'
 # haml
 gem "haml-rails", "~> 0.9"
 
-
 gem "figaro"
 
 gem "font-awesome-rails"
+
+# Image uploader
+gem "paperclip", "~> 5.0.0.beta1"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
