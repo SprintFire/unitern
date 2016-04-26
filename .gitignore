@@ -18,3 +18,6 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# public/system folder
+public/system/*

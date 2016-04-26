@@ -6,7 +6,7 @@
           %div.col-md-12
             %div.col-md-3
               -# %img.img-rounded.img-responsive{src: "http://placehold.it/500x500"}
-              =image_tag @company.logo.url
+              =image_tag @company.logo.url(:small)
             %div.col-md-9
               %h1= @company.name
               %h3
