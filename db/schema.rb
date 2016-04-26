@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425233022) do
+ActiveRecord::Schema.define(version: 20160426101613) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 20160425233022) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   create_table "opportunities", force: :cascade do |t|

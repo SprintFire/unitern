@@ -47,7 +47,7 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:name, :website, :description, :company_size, :founded, :headquarters, :avatar)
+    params.require(:company).permit(:name, :website, :description, :company_size, :founded, :headquarters, :logo)
   end
 
   def require_same_user
