@@ -7,7 +7,8 @@
         %li.panel-body
           %div.col-md-12.ut-card-heading
             %div.col-md-3
-              %img.img-rounded.img-responsive{src: "http://placehold.it/150x150"}
+              -# %img.img-rounded.img-responsive{src: "http://placehold.it/150x150"}
+              = image_tag company.logo.url(:thumb)
             %div.col-md-9
               %h3= link_to company.name, company_path(company)
               %p

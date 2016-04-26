@@ -5,7 +5,8 @@
         %li.panel-body
           %div.col-md-12
             %div.col-md-3
-              %img.img-rounded.img-responsive{src: "http://placehold.it/500x500"}
+              -# %img.img-rounded.img-responsive{src: "http://placehold.it/500x500"}
+              =image_tag @opportunity.company.logo.url(:small)
             %div.col-md-9
               %h1= @opportunity.name
               %h3
